@@ -1,5 +1,5 @@
-const App = () => {
-  return <h1>Vite + React</h1>;
-};
+import { ReactNode } from "react";
 
-export default App;
+export const App = ({ children }: { children: ReactNode }) => {
+  return <>{children}</>;
+};
