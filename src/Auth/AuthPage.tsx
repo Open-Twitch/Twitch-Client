@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Login } from "./Login";
 import { Register } from "./Register";
 
+import './authPage.styles.css'
+
 export const AuthPage = () => {
   const [isLogin, setIsLogin] = useState(true);
 
