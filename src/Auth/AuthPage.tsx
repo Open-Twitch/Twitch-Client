@@ -1,3 +1,11 @@
+import { useState } from "react";
+
 export const AuthPage = () => {
-    return ( <div></div> );
-}
+  const [isLogin, setIsLogin] = useState(true);
+
+  const handleAuthPageToggle = () => {
+    setIsLogin((prev) => !prev);
+  };
+
+  return <div>{isLogin ? <Login /> : <Register />}</div>;
+};
