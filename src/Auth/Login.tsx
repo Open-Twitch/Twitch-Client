@@ -1,3 +1,7 @@
-export const Login = () => {
-    return ( <div></div> );
-}
+export const Login = ({
+  switchAuthHandler,
+}: {
+  switchAuthHandler: () => void;
+}) => {
+  return <div onClick={switchAuthHandler}></div>;
+};

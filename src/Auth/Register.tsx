@@ -1,3 +1,7 @@
-export const Register = () => {
-    return ( <div></div> );
-}
+export const Register = ({
+  switchAuthHandler,
+}: {
+  switchAuthHandler: () => void;
+}) => {
+  return <div onClick={switchAuthHandler}></div>;
+};
