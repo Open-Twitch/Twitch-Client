@@ -1,3 +1,5 @@
+import { Logo } from "./Logo";
+
 export const Login = ({
   switchAuthHandler,
 }: {
@@ -5,7 +7,7 @@ export const Login = ({
 }) => {
   return (
     <div className="login-container">
-      <p>Logo</p>
+      <Logo text="Login to Clone" />
       <form className="auth-form">form</form>
       <span onClick={switchAuthHandler} className="auth-form-switch-label">
         Don't have an account ? Sign up
