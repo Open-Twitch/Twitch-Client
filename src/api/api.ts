@@ -1,3 +1,4 @@
+import { ILoginData } from "@/shared";
 import axios from "axios";
 
 const apiClient = axios.create({
@@ -5,7 +6,7 @@ const apiClient = axios.create({
   timeout: 1000,
 });
 
-export const login = async (data: any) => {
+export const login = async (data: ILoginData) => {
   try {
     return apiClient.post("/auth/login", data);
   } catch (exception) {
