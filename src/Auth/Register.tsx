@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
 import { AuthInput } from "./AuthInput";
 import { Logo } from "./Logo";
@@ -5,6 +6,7 @@ import {
   emailValidationMessage,
   passwordConfValidationMessage,
   passwordValidationMessage,
+  useRegister,
   usernameValidationMessage,
   validateEmail,
   validatePassword,
@@ -17,6 +19,8 @@ export const Register = ({
 }: {
   switchAuthHandler: () => void;
 }) => {
+  const { register, isLoading } = useRegister();
+
   const [formState, setFormState] = useState({
     email: {
       value: "",
@@ -52,6 +56,23 @@ export const Register = ({
       },
     }));
   };
+
+  const handleRegister = (e: any) => {
+    e.preventDefault();
+
+    register({
+      email: formState.email.value,
+      password: formState.password.value,
+      username: formState.username.value,
+    });
+  };
+
+  const buttonDisabled =
+    isLoading ||
+    !formState.password.isValid ||
+    !formState.email.isValid ||
+    !formState.username.isValid ||
+    formState.password.value !== formState.passwordConfirmation.value;
 
   const handleInputValidationOnBlur = (
     value: string,
@@ -129,14 +150,7 @@ export const Register = ({
           validateMessage={passwordConfValidationMessage}
           onBlurHandler={handleInputValidationOnBlur}
         />
-        <button
-          disabled={
-            !formState.password.isValid ||
-            !formState.email.isValid ||
-            !formState.username.isValid ||
-            formState.password.value !== formState.passwordConfirmation.value
-          }
-        >
+        <button onClick={handleRegister} disabled={buttonDisabled}>
           Register
         </button>
       </form>
