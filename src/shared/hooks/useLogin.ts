@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ILoginData } from "..";
 import { login as loginRequest } from "@/api";
+import toast from "react-hot-toast";
 export const useLogin = () => {
   const [isLoading, setIsLoading] = useState(false);
 
@@ -19,7 +20,7 @@ export const useLogin = () => {
     setIsLoading(false);
 
     if (response.error) {
-      console.log(response.error);
+      return toast.error(response.exception?.response?.data || 'Error occured while loogin in. Please try again');
     }
 
     const { userDetails } = response.data;
