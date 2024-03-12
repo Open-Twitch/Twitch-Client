@@ -15,3 +15,14 @@ export const login = async (data: any) => {
     };
   }
 };
+
+export const register = async (data: any) => {
+    try {
+      return apiClient.post("/auth/register", data);
+    } catch (exception) {
+      return {
+        error: true,
+        exception,
+      };
+    }
+  };
