@@ -7,5 +7,4 @@ export interface IRegisterData {
   email: string;
   password: string;
   username: string;
-  passwordConfirmation: string;
 }
