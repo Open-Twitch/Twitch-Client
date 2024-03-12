@@ -1,4 +1,4 @@
-import { ILoginData } from "@/shared";
+import { ILoginData, IRegisterData } from "@/shared";
 import axios from "axios";
 
 const apiClient = axios.create({
@@ -17,7 +17,7 @@ export const login = async (data: ILoginData) => {
   }
 };
 
-export const register = async (data: any) => {
+export const register = async (data: IRegisterData) => {
     try {
       return apiClient.post("/auth/register", data);
     } catch (exception) {
