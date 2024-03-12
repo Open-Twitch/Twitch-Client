@@ -13,6 +13,9 @@ export const Login = ({
 }: {
   switchAuthHandler: () => void;
 }) => {
+
+  const {} = useLo
+
   const [formState, setFormState] = useState({
     email: {
       value: "",
@@ -63,6 +66,12 @@ export const Login = ({
         showError: !isValid,
       },
     }));
+  };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    login
   };
 
   return (
