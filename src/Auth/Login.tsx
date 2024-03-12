@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
 import { AuthInput } from "./AuthInput";
 import { Logo } from "./Logo";
 import {
   emailValidationMessage,
   passwordConfValidationMessage,
+  useLogin,
   validateEmail,
   validatePassword,
 } from "@/shared";
@@ -13,8 +15,7 @@ export const Login = ({
 }: {
   switchAuthHandler: () => void;
 }) => {
-
-  const {} = useLo
+  const { login, isLoading } = useLogin();
 
   const [formState, setFormState] = useState({
     email: {
@@ -68,11 +69,14 @@ export const Login = ({
     }));
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = (e: any) => {
     e.preventDefault();
 
-    login
+    login({ email: formState.email.value, password: formState.password.value });
   };
+
+  const buttonDisabled =
+    isLoading || !formState.password.isValid || !formState.email.isValid;
 
   return (
     <div className="login-container">
@@ -98,9 +102,7 @@ export const Login = ({
           validateMessage={passwordConfValidationMessage}
           onBlurHandler={handleInputValidationOnBlur}
         />
-        <button
-          disabled={!formState.password.isValid || !formState.email.isValid}
-        >
+        <button onClick={handleLogin} disabled={buttonDisabled}>
           Login
         </button>
       </form>

@@ -1,15 +1,17 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { ILoginData } from "..";
+import { login as loginRequest } from "@/api";
 export const useLogin = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
-  const login = async (email: string, password: string) => {
+  const login = async ({ email, password }: ILoginData) => {
     setIsLoading(true);
 
-    const response = await loginRequest({
+    const response: any = await loginRequest({
       email,
       password,
     });

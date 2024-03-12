@@ -3,12 +3,12 @@ import axios from "axios";
 
 const apiClient = axios.create({
   baseURL: "http://localhost:5002/api",
-  timeout: 1000,
+  timeout: 2000,
 });
 
 export const login = async (data: ILoginData) => {
   try {
-    return apiClient.post("/auth/login", data);
+    return await apiClient.post("/auth/login", data);
   } catch (exception) {
     return {
       error: true,
@@ -19,7 +19,7 @@ export const login = async (data: ILoginData) => {
 
 export const register = async (data: IRegisterData) => {
     try {
-      return apiClient.post("/auth/register", data);
+      return await apiClient.post("/auth/register", data);
     } catch (exception) {
       return {
         error: true,
