@@ -8,7 +8,21 @@ export const router = createBrowserRouter([
     element: <AuthPage />,
   },
   {
-    path: "/*",
+    path: "/",
     element: <DashboardPage />,
+    children: [
+      {
+        path: "setting",
+        element: <div>Setting</div>,
+      },
+      {
+        path: "channels",
+        element: <div>channels</div>,
+      },
+      {
+        path: "channel/:id",
+        element: <div>single channel</div>,
+      },
+    ],
   },
 ]);
