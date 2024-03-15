@@ -1,5 +1,5 @@
 import { AuthPage } from "@/Auth";
-import { DashboardPage } from "@/Dashboard";
+import { Channels, DashboardPage } from "@/Dashboard";
 import { createBrowserRouter } from "react-router-dom";
 
 export const router = createBrowserRouter([
@@ -17,7 +17,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "channels",
-        element: <div>channels</div>,
+        element: <Channels />,
       },
       {
         path: "channel/:id",
