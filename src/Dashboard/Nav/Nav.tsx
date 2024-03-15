@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { NavLogo } from ".";
-
-
+import { NavButton, NavLogo } from ".";
 
 export const Nav = () => {
   return (
