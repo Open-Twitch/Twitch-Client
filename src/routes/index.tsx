@@ -1,5 +1,5 @@
 import { AuthPage } from "@/Auth";
-import { ChannelView, Channels, DashboardPage } from "@/Dashboard";
+import { ChannelView, Channels, DashboardPage, Settings } from "@/Dashboard";
 import { createBrowserRouter } from "react-router-dom";
 
 export const router = createBrowserRouter([
@@ -13,7 +13,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "setting",
-        element: <div>Setting</div>,
+        element: <Settings/>,
       },
       {
         path: "channels",
