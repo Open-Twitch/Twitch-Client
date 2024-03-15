@@ -2,19 +2,7 @@
 
 import { NavLogo } from ".";
 
-const NavButton = ({
-  text,
-  onClickHandler,
-}: {
-  text: string;
-  onClickHandler: any;
-}) => {
-  return (
-    <span className="nav-button" onClick={onClickHandler}>
-      {text}
-    </span>
-  );
-};
+
 
 export const Nav = () => {
   return (
