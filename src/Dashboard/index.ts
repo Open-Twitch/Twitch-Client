@@ -1,1 +1,1 @@
-export * from "./DashboarddPage";
+export * from "./DashboardPage";

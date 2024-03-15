@@ -1,5 +1,5 @@
 import { AuthPage } from "@/Auth";
-import { DashboarddPage } from "@/Dashboard";
+import { DashboardPage } from "@/Dashboard";
 import { createBrowserRouter } from "react-router-dom";
 
 export const router = createBrowserRouter([
@@ -8,7 +8,7 @@ export const router = createBrowserRouter([
     element: <AuthPage />,
   },
   {
-    path: "/",
-    element: <DashboarddPage />,
+    path: "/*",
+    element: <DashboardPage />,
   },
 ]);
