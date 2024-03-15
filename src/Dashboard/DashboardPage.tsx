@@ -1,5 +1,12 @@
-import './dashboardPage.css'
+import { Content, Nav, SideBar } from ".";
+import "./dashboardPage.css";
 
 export const DashboardPage = () => {
-  return <div></div>;
+  return (
+    <div className="dashboard-container">
+      <Nav />
+      <SideBar />
+      <Content />
+    </div>
+  );
 };
