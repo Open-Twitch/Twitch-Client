@@ -1,4 +1,5 @@
-const imageUrl = "https://www.sekirothegame.com/content/dam/atvi/sekiro/gallery/Sekiro_01.jpg";
+const imageUrl =
+  "https://www.sekirothegame.com/content/dam/atvi/sekiro/gallery/Sekiro_01.jpg";
 
 const ChannelAvatar = ({ url }: { url: string }) => {
   return (
@@ -30,6 +31,14 @@ export const ChannelCard = ({
   return (
     <div className="channels-card" onClick={handleNavigate}>
       <ChannelAvatar url={avatarUrl} />
+      <span className="channels-card-title">{title}</span>
+      <span className="channels-card-text">{username}</span>
+      <span
+        className="channels-card-text"
+        style={{ color: isOnline ? "green" : "red" }}
+      >
+        {isOnline ? "Online" : "Ofline"}
+      </span>
     </div>
   );
 };

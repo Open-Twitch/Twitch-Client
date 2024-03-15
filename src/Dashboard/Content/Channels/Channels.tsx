@@ -14,7 +14,7 @@ export const dummyChannels = [
     title: "test1",
     avatarUrl: "",
     username: "Marta",
-    isOnline: false,
+    isOnline: true,
   },
   {
     id: 3,
