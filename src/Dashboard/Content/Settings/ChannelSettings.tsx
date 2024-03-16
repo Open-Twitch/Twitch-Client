@@ -1,12 +1,14 @@
 import {
+  Input,
   avatarUrlValidationMessage,
   descriptionValidationMessage,
   titleValidationMessage,
   usernameValidationMessage,
 } from "@/shared";
+import { useState } from "react";
 
 interface input {
-  field: string;
+  field: "username" | "title" | "avatarUrl" | "description";
   label: string;
   validationMessage: string;
   type: string;
@@ -41,6 +43,50 @@ const inputs: input[] = [
   },
 ];
 
-export const ChannelSettings = () => {
-  return <form className="settings-form">ChannelSettings</form>;
+export const ChannelSettings = ({
+  settings,
+}: {
+  settings: { [key: string]: string };
+}) => {
+  const [formState, setFormState] = useState({
+    title: {
+      isvalid: false,
+      showError: false,
+      value: settings.title,
+    },
+    username: {
+      isvalid: false,
+      showError: false,
+      value: settings.username,
+    },
+    avatarUrl: {
+      isvalid: false,
+      showError: false,
+      value: settings.avatarUrl,
+    },
+    description: {
+      isvalid: false,
+      showError: false,
+      value: settings.description,
+    },
+  });
+
+  return (
+    <form className="settings-form">
+      {inputs.map((input) => (
+        <Input
+          key={input.field}
+          field={input.field}
+          label={input.label}
+          value={formState[input.field].value}
+          onChangeHandler={()=>{}}
+          type={input.type}
+          showErrorMessage={formState[input.field].isvalid}
+          validateMessage={input.validationMessage}
+          onBlurHandler={()=>{}}
+          textarea={input.textarea}
+        />
+      ))}
+    </form>
+  );
 };
