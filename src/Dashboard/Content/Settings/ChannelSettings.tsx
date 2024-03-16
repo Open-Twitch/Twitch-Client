@@ -5,6 +5,7 @@ interface input {
   label: string;
   validationMessage: string;
   type: string;
+  textarea?: boolean;
 }
 
 const inputs: input[] = [
