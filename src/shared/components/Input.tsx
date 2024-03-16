@@ -16,8 +16,8 @@ export const Input = ({
   value: string;
   onChangeHandler: any;
   type: string;
-  showErrorMessage: boolean;
-  validateMessage: string;
+  showErrorMessage: any;
+  validateMessage: any;
   onBlurHandler: any;
   textarea?: boolean;
 }) => {
