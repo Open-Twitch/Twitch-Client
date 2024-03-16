@@ -1,3 +1,4 @@
+import { ChannelSettings } from "./ChannelSettings";
 import { StreamKey } from "./StreamKey";
 
 const channelsSettings ={
@@ -11,6 +12,7 @@ const channelsSettings ={
 export const Settings = () => {
   return <div className="settings-container">
     <span>Setting</span>
+    <ChannelSettings/>
     <StreamKey streamKey={channelsSettings.streamKey}/>
   </div>;
 };
