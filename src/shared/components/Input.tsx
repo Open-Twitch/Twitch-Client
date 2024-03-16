@@ -42,7 +42,7 @@ export const Input = ({
           onBlur={handleInputBlur}
           rows={5}
           style={{ maxWidth: "400px" }}
-        ></textarea>
+        />
       ) : (
         <input
           type={type}

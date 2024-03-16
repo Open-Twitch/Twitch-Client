@@ -9,17 +9,14 @@ import {
   validateTitle,
   validateUsername,
 } from "@/shared";
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
+import { input } from "./type";
 
-interface input {
+interface settingInput extends input {
   field: "username" | "title" | "avatarUrl" | "description";
-  label: string;
-  validationMessage: string;
-  type: string;
-  textarea?: boolean;
 }
 
-const inputs: input[] = [
+const inputs: settingInput[] = [
   {
     field: "username",
     label: "Username",
@@ -120,6 +117,17 @@ export const ChannelSettings = ({
     }));
   };
 
+  const handleFormSubmit = (e: MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    // TODO:
+  };
+
+  const isSubmitButtonDisabled =
+    !formState.username.isvalid ||
+    !formState.title.isvalid ||
+    !formState.avatarUrl.isvalid ||
+    !formState.description.isvalid;
+
   return (
     <form className="settings-form">
       {inputs.map((input) => (
@@ -136,6 +144,9 @@ export const ChannelSettings = ({
           textarea={input.textarea}
         />
       ))}
+      <button onClick={handleFormSubmit} disabled={isSubmitButtonDisabled}>
+        Save Changes
+      </button>
     </form>
   );
 };
