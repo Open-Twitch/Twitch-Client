@@ -1,4 +1,9 @@
-import { usernameValidationMessage } from "@/shared";
+import {
+  avatarUrlValidationMessage,
+  descriptionValidationMessage,
+  titleValidationMessage,
+  usernameValidationMessage,
+} from "@/shared";
 
 interface input {
   field: string;
@@ -18,19 +23,19 @@ const inputs: input[] = [
   {
     field: "title",
     label: "Title",
-    validationMessage: "titleValidationMessage",
+    validationMessage: titleValidationMessage,
     type: "text",
   },
   {
     field: "avatarUrl",
     label: "Avatar Url",
-    validationMessage: "avatarUrlValidationMessage",
+    validationMessage: avatarUrlValidationMessage,
     type: "text",
   },
   {
     field: "description",
     label: "Description",
-    validationMessage: "descriptionValidationMessage",
+    validationMessage: descriptionValidationMessage,
     type: "text",
     textarea: true,
   },
