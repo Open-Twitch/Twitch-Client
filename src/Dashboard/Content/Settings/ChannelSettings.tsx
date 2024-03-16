@@ -1,8 +1,13 @@
 import { usernameValidationMessage } from "@/shared";
 
+interface input {
+  field: string;
+  label: string;
+  validationMessage: string;
+  type: string;
+}
 
-
-const inputs = [
+const inputs: input[] = [
   {
     field: "username",
     label: "Username",
