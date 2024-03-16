@@ -4,6 +4,10 @@ import {
   descriptionValidationMessage,
   titleValidationMessage,
   usernameValidationMessage,
+  validateAvatarUrl,
+  validateDescription,
+  validateTitle,
+  validateUsername,
 } from "@/shared";
 import { useState } from "react";
 
@@ -71,6 +75,51 @@ export const ChannelSettings = ({
     },
   });
 
+  const handleInputValueChange = (
+    value: string,
+    field: "username" | "title" | "avatarUrl" | "description"
+  ) => {
+    setFormState((prev) => ({
+      ...prev,
+      [field]: {
+        ...prev[field],
+        value: value,
+      },
+    }));
+  };
+
+  const handleInputValidationOnBlur = (
+    value: string,
+    field: "username" | "title" | "avatarUrl" | "description"
+  ) => {
+    let isValid = false;
+    switch (field) {
+      case "username":
+        isValid = validateUsername(value);
+        break;
+      case "title":
+        isValid = validateTitle(value);
+        break;
+      case "avatarUrl":
+        isValid = validateAvatarUrl(value);
+        break;
+      case "description":
+        isValid = validateDescription(value);
+        break;
+      default:
+        break;
+    }
+
+    setFormState((prev) => ({
+      ...prev,
+      [field]: {
+        ...prev[field],
+        isValid,
+        showError: !isValid,
+      },
+    }));
+  };
+
   return (
     <form className="settings-form">
       {inputs.map((input) => (
@@ -79,11 +128,11 @@ export const ChannelSettings = ({
           field={input.field}
           label={input.label}
           value={formState[input.field].value}
-          onChangeHandler={()=>{}}
+          onChangeHandler={handleInputValueChange}
           type={input.type}
           showErrorMessage={formState[input.field].isvalid}
           validateMessage={input.validationMessage}
-          onBlurHandler={()=>{}}
+          onBlurHandler={handleInputValidationOnBlur}
           textarea={input.textarea}
         />
       ))}

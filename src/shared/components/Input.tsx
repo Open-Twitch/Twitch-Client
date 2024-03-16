@@ -15,8 +15,8 @@ export const Input = ({
     value: string;
     onChangeHandler: any;
     type: string;
-    showErrorMessage: any;
-    validateMessage: any;
+    showErrorMessage: boolean;
+    validateMessage: string;
     onBlurHandler: any;
   }) => {
       
