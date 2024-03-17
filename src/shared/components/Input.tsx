@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-export const AuthInput = ({
+export const Input = ({
   field,
   label,
   value,
@@ -9,6 +9,7 @@ export const AuthInput = ({
   showErrorMessage,
   validateMessage,
   onBlurHandler,
+  textarea,
 }: {
   field: string;
   label: string;
@@ -18,8 +19,8 @@ export const AuthInput = ({
   showErrorMessage: any;
   validateMessage: any;
   onBlurHandler: any;
+  textarea?: boolean;
 }) => {
-    
   const handleValueChange = (e: any) => {
     onChangeHandler(e.target.value, field);
   };
@@ -33,12 +34,23 @@ export const AuthInput = ({
       <div className="auth-form-label">
         <span>{label}</span>
       </div>
-      <input
-        type={type}
-        value={value}
-        onChange={handleValueChange}
-        onBlur={handleInputBlur}
-      />
+      {textarea ? (
+        <textarea
+          typeof={type}
+          value={value}
+          onChange={handleValueChange}
+          onBlur={handleInputBlur}
+          rows={5}
+          style={{ maxWidth: "400px" }}
+        />
+      ) : (
+        <input
+          type={type}
+          value={value}
+          onChange={handleValueChange}
+          onBlur={handleInputBlur}
+        />
+      )}
       <span className="auth-form-validation-message">
         {showErrorMessage && validateMessage}
       </span>
