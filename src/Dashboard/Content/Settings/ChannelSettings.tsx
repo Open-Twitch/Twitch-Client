@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   Input,
   avatarUrlValidationMessage,
@@ -46,27 +47,29 @@ const inputs: settingInput[] = [
 
 export const ChannelSettings = ({
   settings,
+  saveSettings,
 }: {
   settings: { [key: string]: string };
+  saveSettings: any;
 }) => {
   const [formState, setFormState] = useState({
     title: {
-      isvalid: false,
+      isValid: false,
       showError: false,
       value: settings.title,
     },
     username: {
-      isvalid: false,
+      isValid: false,
       showError: false,
       value: settings.username,
     },
     avatarUrl: {
-      isvalid: false,
+      isValid: false,
       showError: false,
       value: settings.avatarUrl,
     },
     description: {
-      isvalid: false,
+      isValid: false,
       showError: false,
       value: settings.description,
     },
@@ -119,14 +122,19 @@ export const ChannelSettings = ({
 
   const handleFormSubmit = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    // TODO:
+    saveSettings({
+      title: formState.title.value,
+      username: formState.username.value,
+      avatarUrl: formState.avatarUrl.value,
+      description: formState.description.value,
+    });
   };
 
   const isSubmitButtonDisabled =
-    !formState.username.isvalid ||
-    !formState.title.isvalid ||
-    !formState.avatarUrl.isvalid ||
-    !formState.description.isvalid;
+    !formState.username.isValid ||
+    !formState.title.isValid ||
+    !formState.avatarUrl.isValid ||
+    !formState.description.isValid;
 
   return (
     <form className="settings-form">
@@ -144,7 +152,7 @@ export const ChannelSettings = ({
           textarea={input.textarea}
         />
       ))}
-      <button onClick={handleFormSubmit} disabled={isSubmitButtonDisabled}>
+      <button onClick={handleFormSubmit} type="button" disabled={isSubmitButtonDisabled}>
         Save Changes
       </button>
     </form>

@@ -62,7 +62,6 @@ export const PasswordSetting = () => {
       },
     }));
   };
-  console.log(formState);
 
   const handleFormSubmit = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();

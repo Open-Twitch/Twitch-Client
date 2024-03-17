@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { getChannelSetting } from "@/api";
+import { getChannelSetting, updateChannelSetting } from "@/api";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
@@ -25,7 +25,17 @@ export const useChannelSetting = () => {
     });
   };
 
-  const saveSettings = async () => {};
+  const saveSettings = async (data:{ [key: string]: string }) => {
+    const response:any = await updateChannelSetting(data);
+    if (response.error) {
+      return toast.error(
+        response.exception?.response?.data ||
+          "Error occured when saving channel details"
+      );
+    }
+
+    toast.success('Channel settings save successfully')
+  };
 
   useEffect(() => {
     fetchChannelSetting();
