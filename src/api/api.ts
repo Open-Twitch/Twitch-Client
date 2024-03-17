@@ -1,7 +1,6 @@
-import { ILoginData, IRegisterData } from "@/shared";
 import axios from "axios";
 
-const apiClient = axios.create({
+export const apiClient = axios.create({
   baseURL: "http://localhost:5002/api",
   timeout: 10000,
 });
@@ -22,57 +21,5 @@ apiClient.interceptors.request.use(
   }
 );
 
-export const login = async (data: ILoginData) => {
-  try {
-    return await apiClient.post("/auth/login", data);
-  } catch (exception) {
-    return {
-      error: true,
-      exception,
-    };
-  }
-};
 
-export const register = async (data: IRegisterData) => {
-  try {
-    return await apiClient.post("/auth/register", data);
-  } catch (exception) {
-    return {
-      error: true,
-      exception,
-    };
-  }
-};
 
-export const getChannelSetting = async () => {
-  try {
-    return await apiClient.get("/settings/channel");
-  } catch (error) {
-    return {
-      error: true,
-      exception: error,
-    };
-  }
-};
-
-export const updateChannelSetting = async (data: { [key: string]: string }) => {
-  try {
-    return await apiClient.put("/settings/channel", data);
-  } catch (error) {
-    return {
-      error: true,
-      exception: error,
-    };
-  }
-};
-
-export const changePassword = async (data: { [key: string]: string }) => {
-  try {
-    return await apiClient.patch("/settings/password", data);
-  } catch (error) {
-    return {
-      error: true,
-      exception: error,
-    };
-  }
-};
