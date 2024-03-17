@@ -65,3 +65,14 @@ export const updateChannelSetting = async (data: { [key: string]: string }) => {
     };
   }
 };
+
+export const changePassword = async (data: { [key: string]: string }) => {
+  try {
+    return await apiClient.patch("/settings/password", data);
+  } catch (error) {
+    return {
+      error: true,
+      exception: error,
+    };
+  }
+};
