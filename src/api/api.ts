@@ -30,7 +30,7 @@ export const register = async (data: IRegisterData) => {
 
 export const getChannelSetting = async () => {
   try {
-    return await apiClient.get("/channels");
+    return await apiClient.get("/settings/channel");
   } catch (error) {
     return {
       error: true,

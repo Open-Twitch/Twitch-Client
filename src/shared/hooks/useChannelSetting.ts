@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { getChannelSetting } from "@/api";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 export const useChannelSetting = () => {
@@ -11,7 +11,7 @@ export const useChannelSetting = () => {
 
     if (response.error) {
       return toast.error(
-        response.exception?.responce?.data ||
+        response.exception?.response?.data ||
           "Error occured when fetching channel setting"
       );
     }
@@ -26,6 +26,10 @@ export const useChannelSetting = () => {
   };
 
   const saveSettings = async () => {};
+
+  useEffect(() => {
+    fetchChannelSetting();
+  }, []);
 
   return {
     isFetching: !channelsSettings,
