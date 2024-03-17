@@ -12,7 +12,7 @@ export const useChannelSetting = () => {
     if (response.error) {
       return toast.error(
         response.exception?.response?.data ||
-          "Error occured when fetching channel setting"
+          "Error occurred when fetching channel setting"
       );
     }
 
@@ -30,7 +30,7 @@ export const useChannelSetting = () => {
     if (response.error) {
       return toast.error(
         response.exception?.response?.data ||
-          "Error occured when saving channel details"
+          "Error occurred when saving channel details"
       );
     }
 

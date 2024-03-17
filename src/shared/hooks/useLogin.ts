@@ -22,7 +22,7 @@ export const useLogin = () => {
     if (response.error) {
       return toast.error(
         response.exception?.response?.data ||
-          "Error occured while loging in. Please try again"
+          "Error occurred while loging in. Please try again"
       );
     }
 
