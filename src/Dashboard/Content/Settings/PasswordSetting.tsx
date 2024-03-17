@@ -1,4 +1,9 @@
-import { Input, passwordValidationMessage, validatePassword } from "@/shared";
+import {
+  Input,
+  passwordValidationMessage,
+  useChangePassword,
+  validatePassword,
+} from "@/shared";
 import { input } from "./type";
 import { MouseEvent, useState } from "react";
 
@@ -34,6 +39,8 @@ export const PasswordSetting = () => {
     },
   });
 
+  const { changePassword } = useChangePassword();
+
   const handleInputValueChange = (
     value: string,
     field: "password" | "newPassword"
@@ -65,7 +72,10 @@ export const PasswordSetting = () => {
 
   const handleFormSubmit = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    // TODO:
+    changePassword({
+      password: formState.password.value,
+      newPassword: formState.newPassword.value,
+    });
   };
 
   const isSubmitButtonDisabled =
@@ -87,7 +97,7 @@ export const PasswordSetting = () => {
           textarea={input.textarea}
         />
       ))}
-      <button onClick={handleFormSubmit} disabled={isSubmitButtonDisabled}>
+      <button onClick={handleFormSubmit} type="button" disabled={isSubmitButtonDisabled}>
         Save Changes
       </button>
     </form>
