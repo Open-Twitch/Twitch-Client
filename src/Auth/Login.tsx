@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
-import { AuthInput } from "./AuthInput";
 import { Logo } from "./Logo";
 import {
+  Input,
   emailValidationMessage,
   passwordConfValidationMessage,
   useLogin,
@@ -82,7 +82,7 @@ export const Login = ({
     <div className="login-container">
       <Logo text="Login to Clone" />
       <form className="auth-form">
-        <AuthInput
+        <Input
           field={"email"}
           label={"Email"}
           value={formState.email.value}
@@ -92,7 +92,7 @@ export const Login = ({
           validateMessage={emailValidationMessage}
           onBlurHandler={handleInputValidationOnBlur}
         />
-        <AuthInput
+        <Input
           field={"password"}
           label={"Password"}
           value={formState.password.value}
