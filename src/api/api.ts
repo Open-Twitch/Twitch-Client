@@ -6,6 +6,22 @@ const apiClient = axios.create({
   timeout: 10000,
 });
 
+apiClient.interceptors.request.use(
+  (config) => {
+    const userDetails = localStorage.getItem("user");
+
+    if (userDetails) {
+      const token = JSON.parse(userDetails).token;
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
 export const login = async (data: ILoginData) => {
   try {
     return await apiClient.post("/auth/login", data);
