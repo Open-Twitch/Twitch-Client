@@ -18,12 +18,23 @@ export const login = async (data: ILoginData) => {
 };
 
 export const register = async (data: IRegisterData) => {
-    try {
-      return await apiClient.post("/auth/register", data);
-    } catch (exception) {
-      return {
-        error: true,
-        exception,
-      };
-    }
-  };
+  try {
+    return await apiClient.post("/auth/register", data);
+  } catch (exception) {
+    return {
+      error: true,
+      exception,
+    };
+  }
+};
+
+export const getChannelSetting = async () => {
+  try {
+    return await apiClient.get("/channels");
+  } catch (error) {
+    return {
+      error: true,
+      exception: error,
+    };
+  }
+};
