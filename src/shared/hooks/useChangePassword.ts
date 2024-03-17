@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import toast from "react-hot-toast";
-import { changePassword as changePasswordRequest } from "./../../api/api";
+import { changePassword as changePasswordRequest } from "@/api";
 
 export const useChangePassword = () => {
   const changePassword = async ({
