@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { logout as logoutHandler } from "..";
 
 const getUserDetails = () => {
   const userDetails = localStorage.getItem("user");
@@ -10,9 +11,9 @@ const getUserDetails = () => {
 
 export const useUserDetails = () => {
   const [userDetails, setUserDetails] = useState(getUserDetails());
-
   const logout = () => {
     setUserDetails(null);
+    logoutHandler();
   };
 
   return {

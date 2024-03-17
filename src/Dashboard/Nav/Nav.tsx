@@ -5,7 +5,7 @@ import { NavButton, NavLogo } from ".";
 import { Link } from "react-router-dom";
 
 export const Nav = () => {
-  const { isLogged } = useUserDetails();
+  const { isLogged, logout } = useUserDetails();
 
   return (
     <div className="nav-container">
@@ -19,7 +19,7 @@ export const Nav = () => {
             <Link to={"/settings"}>
               <NavButton text="My Account" />
             </Link>
-            <NavButton text="Logout" onClickHandler={() => {}} />
+            <NavButton text="Logout" onClickHandler={logout} />
           </div>
         ) : (
           <Link to={"/auth"}>
