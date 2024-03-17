@@ -10,3 +10,14 @@ export const getFollowedChannels = async()=>{
         };
       }
 }
+
+export const getChannels = async()=>{
+    try {
+        return await apiClient.get("/channels");
+      } catch (error) {
+        return {
+          error: true,
+          exception: error,
+        };
+      }
+}
