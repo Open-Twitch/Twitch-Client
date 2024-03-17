@@ -4,7 +4,7 @@ export const NavButton = ({
     onClickHandler,
   }: {
     text: string;
-    onClickHandler: any;
+    onClickHandler?: any;
   }) => {
     return (
       <span className="nav-button" onClick={onClickHandler}>

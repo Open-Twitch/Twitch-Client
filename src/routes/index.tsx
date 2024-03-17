@@ -12,7 +12,7 @@ export const router = createBrowserRouter([
     element: <DashboardPage />,
     children: [
       {
-        path: "setting",
+        path: "settings",
         element: <Settings/>,
       },
       {
